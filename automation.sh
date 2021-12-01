@@ -23,4 +23,8 @@ aws s3 \
 cp /tmp/varadha-httpd-logs-$d.tar \
 s3://upgrad-varadharajan/varadha-httpd-logs-$d.tar
 
+echo "Cron job content"
+cat /etc/cron.d/automation
+
+
 exit 0
