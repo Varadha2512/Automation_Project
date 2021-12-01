@@ -23,6 +23,10 @@ aws s3 \
 cp /tmp/varadha-httpd-logs-$d.tar \
 s3://upgrad-varadharajan/varadha-httpd-logs-$d.tar
 
+echo "Inventory list of S3 Objects"
+cd /var/www/html | touch inventory.html
+aws s3 ls s3://upgrad-varadharajan --recursive | sort | awk BEGIN'{print "Name\tDate\tTime\tSize\n"}; {print $4,$1,$2,$3}' | column -t | cat >> inventory.html
+
 echo "Cron job content"
 cat /etc/cron.d/automation
 
